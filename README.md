@@ -15,4 +15,9 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-![GitHub 统计](https://github-stats-extended.vercel.app/api?username=dogledogle&show_icons=true&theme=radical)
+<a href="https://github.com/dogledogle">
+  <img height=200 align="center" src="https://github-stats-extended.vercel.app/api?username=dogledogle&show_icons=true&hide=stars" />
+</a>
+<a href="https://github.com/dogledogle">
+  <img height=200 align="center" src="https://github-stats-extended.vercel.app/api/top-langs/?username=dogledogle&layout=compact&langs_count=8" />
+</a>
