@@ -1,23 +1,73 @@
-## Hi there 👋
 
-<!--
-**dogledogle/dogledogle** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<p align="center">
+  👋 I'm <b>dogledogle</b> — originally just <i>dogle</i>, but someone got there first. Naming is hard before the coding even starts.😅
+</p>
 
-Here are some ideas to get you started:
+<p align="center">
+  I'm a frontend developer and a maintainer of the <a href="https://github.com/vitejs/vite/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle">vitejs/docs-cn</a>.
+</p>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<p align="center">
+  I may be late to the open-source party, but I brought plenty of enthusiasm. 
+</p>
 
-<a href="https://github.com/dogledogle">
-  <img height=200 align="center" src="https://github-stats-extended.vercel.app/api?username=dogledogle&show_icons=true&hide=stars" />
-</a>
-<a href="https://github.com/dogledogle">
-  <img height=200 align="center" src="https://github-stats-extended.vercel.app/api/top-langs/?username=dogledogle&layout=compact&langs_count=8" />
-</a>
+<p align="center">
+ Just a quick aside, I vibe-coded <a href="https://github.com/dogledogle/easy-tv">Easy TV</a>, a desktop app for watching live TV. Take a look.
+</p>
+
+
+
+<!-- Tech stack -->
+
+<h2 align="center">Technologies & Tools</h2>
+
+<p align="center">
+  <img
+    src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"
+    alt="TypeScript"
+  />
+  <img
+    src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=111111"
+    alt="JavaScript"
+  />
+  <img
+    src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"
+    alt="React"
+  />
+  <img
+    src="https://img.shields.io/badge/Vue.js-35495E?style=flat-square&logo=vuedotjs&logoColor=4FC08D"
+    alt="Vue"
+  />
+  <img
+    src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"
+    alt="Vite"
+  />
+  <img
+    src="https://img.shields.io/badge/Electron-2B2E3A?style=flat-square&logo=electron&logoColor=9FEAF9"
+    alt="Electron"
+  />
+  <img
+    src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"
+    alt="Node.js"
+  />
+  <img
+    src="https://img.shields.io/badge/Codex-000000?style=flat-square&logo=openai&logoColor=white"
+    alt="Codex"
+  />
+</p>
+
+
+<!-- Contributions -->
+<h2 align="center">Open-source Contributions</h2>
+<p align="center">
+  <a href="https://github.com/vitejs/vite/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Avitejs%2Fvite%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Vite&amp;style=flat-square&amp;logo=vite&amp;logoColor=white&amp;color=646CFF" alt="Vite merged PRs"/></a>
+  <a href="https://github.com/vitejs/docs-cn/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Avitejs%2Fdocs-cn%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Vite%20Docs%20CN&amp;style=flat-square&amp;logo=vite&amp;logoColor=white&amp;color=0F766E" alt="Vite Docs CN merged PRs"/></a>
+  <a href="https://github.com/ant-design/ant-design/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Aant-design%2Fant-design%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Ant%20Design&amp;style=flat-square&amp;logo=antdesign&amp;logoColor=white&amp;color=1677FF" alt="Ant Design merged PRs"/></a>
+  <a href="https://github.com/mdn/translated-content/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Amdn%2Ftranslated-content%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=MDN&amp;style=flat-square&amp;logo=mdnwebdocs&amp;logoColor=white&amp;color=111111" alt="MDN merged PRs"/></a>
+</p>
+
+<p align="center">
+  <i>
+    Good documentation is part of the product.
+  </i>
+</p>
