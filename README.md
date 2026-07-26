@@ -11,11 +11,15 @@
   I may be late to the open-source party, but I brought plenty of enthusiasm. 
 </p>
 
-<p align="center">
+<!-- <p align="center">
  Just a quick aside, I vibe-coded <a href="https://github.com/dogledogle/easy-tv">Easy TV</a>, a desktop app for watching live TV. Take a look.
+</p> -->
+
+<p align="center">
+  <i>
+    Good documentation is part of the product.
+  </i>
 </p>
-
-
 
 <!-- Tech stack -->
 
@@ -66,8 +70,3 @@
   <a href="https://github.com/mdn/translated-content/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Amdn%2Ftranslated-content%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=MDN&amp;style=flat-square&amp;logo=mdnwebdocs&amp;logoColor=white&amp;color=111111" alt="MDN merged PRs"/></a>
 </p>
 
-<p align="center">
-  <i>
-    Good documentation is part of the product.
-  </i>
-</p>
