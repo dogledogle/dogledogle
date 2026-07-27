@@ -74,3 +74,11 @@
   <a href="https://github.com/mdn/translated-content/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Amdn%2Ftranslated-content%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=MDN&amp;style=flat-square&amp;logo=mdnwebdocs&amp;logoColor=white&amp;color=111111" alt="MDN merged PRs"/></a>
 </p>
 
+<p align="center>
+<!-- TOP-CONTRIBUTED-REPOS:START -->
+
+首次运行 GitHub Actions 后，这里会被自动替换。
+
+<!-- TOP-CONTRIBUTED-REPOS:END -->  
+</p>
+
