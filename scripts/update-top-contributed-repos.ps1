@@ -134,7 +134,7 @@ $badgeLines = @(
 )
 
 if ($badgeLines.Count -eq 0) {
-    $badgeLines = @("_No merged pull requests found._")
+    $badgeLines = @("<em>No merged pull requests found.</em>")
 }
 
 $readmeFullPath = (Resolve-Path -LiteralPath $ReadmePath).Path
@@ -159,13 +159,12 @@ else {
     "`n"
 }
 
+$badgeHtml = $badgeLines -join " "
+
 $replacementLines = @(
     $startMarker
-    ""
     "<!-- Generated automatically. Do not edit this section manually. -->"
-    ""
-) + $badgeLines + @(
-    ""
+    "<p align=`"center`">$badgeHtml</p>"
     $endMarker
 )
 
