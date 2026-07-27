@@ -31,7 +31,7 @@ jobs:
         run: |
           ./scripts/update-top-contributed-repos.ps1 `
             -UserName "dogledogle" `
-            -TopCount 10 `
+            -TopCount 5 `
             -ReadmePath "README.md"
 
       - name: Commit updated README
