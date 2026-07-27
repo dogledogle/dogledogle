@@ -62,6 +62,11 @@ $badgeOverrides = @{
         Label = "Vite 中文文档"
         Logo  = "vite"
     }
+    
+    "vitejs/vite" = @{
+        Label = "Vite"
+        Logo  = "vite"
+    }
 
     "wangdoc/typescript-tutorial" = @{
         Label = "TypeScript 教程"
