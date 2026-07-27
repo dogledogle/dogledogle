@@ -39,16 +39,20 @@
     alt="React"
   />
   <img
-    src="https://img.shields.io/badge/Vue.js-35495E?style=flat-square&logo=vuedotjs&logoColor=4FC08D"
+    src="https://img.shields.io/badge/Vue-35495E?style=flat-square&logo=vuedotjs&logoColor=4FC08D"
     alt="Vue"
+  />
+  <img
+    src="https://img.shields.io/badge/Webpack-2B3A4A?style=flat-square&logo=webpack&logoColor=white"
+    alt="Webpack"
   />
   <img
     src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"
     alt="Vite"
   />
   <img
-    src="https://img.shields.io/badge/Electron-2B2E3A?style=flat-square&logo=electron&logoColor=9FEAF9"
-    alt="Electron"
+    src="https://img.shields.io/badge/Less-1D365D?style=flat-square&logo=less&logoColor=white"
+    alt="Less"
   />
   <img
     src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"
