@@ -58,9 +58,34 @@ $repositories = @(
 # Optional visual overrides for specific repositories.
 # Repositories not listed here use their repository name and GitHub logo.
 $badgeOverrides = @{
+    "vitejs/docs-cn" = @{
+        Label = "Vite 中文文档"
+        Logo  = "vite"
+    }
+
+    "wangdoc/typescript-tutorial" = @{
+        Label = "TypeScript 教程"
+        Logo  = "typescript"
+    }
+
+    "ant-design/ant-design" = @{
+        Label = "Ant Design"
+        Logo  = "antdesign"
+    }
+
     "mdn/translated-content" = @{
         Label = "MDN"
         Logo  = "mdnwebdocs"
+    }
+
+    "vuejs-translations/docs-zh-cn" = @{
+        Label = "Vue.js 中文文档"
+        Logo  = "vuedotjs"
+    }
+
+    "DavidHDev/canvas-ui" = @{
+        Label = "Canvas UI"
+        Logo  = "html5"
     }
 }
 
