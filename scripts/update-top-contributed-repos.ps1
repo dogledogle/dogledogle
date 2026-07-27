@@ -1,6 +1,6 @@
 param(
     [string]$UserName = "dogledogle",
-    [int]$TopCount = 10,
+    [int]$TopCount = 5,
     [string]$ReadmePath = "README.md"
 )
 
