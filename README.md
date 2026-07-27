@@ -74,22 +74,14 @@
   <a href="https://github.com/mdn/translated-content/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Amdn%2Ftranslated-content%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=MDN&amp;style=flat-square&amp;logo=mdnwebdocs&amp;logoColor=white&amp;color=111111" alt="MDN merged PRs"/></a>
 </p>
 
-<p align="center>
+<p align="center">
 <!-- TOP-CONTRIBUTED-REPOS:START -->
-
 <!-- Generated automatically. Do not edit this section manually. -->
-
 <a href="https://github.com/vitejs/docs-cn/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Avitejs%2Fdocs-cn%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Vite%20%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3&amp;style=flat-square&amp;logo=vite&amp;logoColor=white&amp;color=111111" alt="Vite 中文文档 merged PRs" /></a>
 <a href="https://github.com/vitejs/vite/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Avitejs%2Fvite%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=vite&amp;style=flat-square&amp;logo=github&amp;logoColor=white&amp;color=111111" alt="vite merged PRs" /></a>
 <a href="https://github.com/wangdoc/typescript-tutorial/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Awangdoc%2Ftypescript-tutorial%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=TypeScript%20%E6%95%99%E7%A8%8B&amp;style=flat-square&amp;logo=typescript&amp;logoColor=white&amp;color=111111" alt="TypeScript 教程 merged PRs" /></a>
 <a href="https://github.com/ant-design/ant-design/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Aant-design%2Fant-design%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Ant%20Design&amp;style=flat-square&amp;logo=antdesign&amp;logoColor=white&amp;color=111111" alt="Ant Design merged PRs" /></a>
 <a href="https://github.com/mdn/translated-content/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Amdn%2Ftranslated-content%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=MDN&amp;style=flat-square&amp;logo=mdnwebdocs&amp;logoColor=white&amp;color=111111" alt="MDN merged PRs" /></a>
-<a href="https://github.com/vuejs-translations/docs-zh-cn/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Avuejs-translations%2Fdocs-zh-cn%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Vue.js%20%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3&amp;style=flat-square&amp;logo=vuedotjs&amp;logoColor=white&amp;color=111111" alt="Vue.js 中文文档 merged PRs" /></a>
-<a href="https://github.com/DavidHDev/canvas-ui/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3ADavidHDev%2Fcanvas-ui%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Canvas%20UI&amp;style=flat-square&amp;logo=html5&amp;logoColor=white&amp;color=111111" alt="Canvas UI merged PRs" /></a>
-<a href="https://github.com/dogledogle/typescript-tutorial/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Adogledogle%2Ftypescript-tutorial%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=typescript-tutorial&amp;style=flat-square&amp;logo=github&amp;logoColor=white&amp;color=111111" alt="typescript-tutorial merged PRs" /></a>
-<a href="https://github.com/dogledogle/vue-docs-zh-cn/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Adogledogle%2Fvue-docs-zh-cn%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=vue-docs-zh-cn&amp;style=flat-square&amp;logo=github&amp;logoColor=white&amp;color=111111" alt="vue-docs-zh-cn merged PRs" /></a>
-<a href="https://github.com/boyum/markdown-it-image-size/pulls?q=is%3Apr%20is%3Amerged%20author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Aboyum%2Fmarkdown-it-image-size%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=markdown-it-image-size&amp;style=flat-square&amp;logo=github&amp;logoColor=white&amp;color=111111" alt="markdown-it-image-size merged PRs" /></a>
-
 <!-- TOP-CONTRIBUTED-REPOS:END -->  
 </p>
 
