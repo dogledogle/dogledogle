@@ -59,38 +59,45 @@ $repositories = @(
 # Repositories not listed here use their repository name and GitHub logo.
 $badgeOverrides = @{
     "vitejs/docs-cn" = @{
-        Label = "Vite 中文文档"
+        Label = "Vite Docs CN"
         Logo  = "vite"
+        Color  = "b39aff"
     }
     
     "vitejs/vite" = @{
         Label = "Vite"
         Logo  = "vite"
+        Color  = "646CFF"
     }
 
     "wangdoc/typescript-tutorial" = @{
-        Label = "TypeScript 教程"
+        Label = "TypeScript Tutorial"
         Logo  = "typescript"
+        Color  = "e57102"
     }
 
     "ant-design/ant-design" = @{
         Label = "Ant Design"
         Logo  = "antdesign"
+        Color  = "1677ff"
     }
 
     "mdn/translated-content" = @{
         Label = "MDN"
         Logo  = "mdnwebdocs"
+        Color  = "0a5dbd"
     }
 
     "vuejs-translations/docs-zh-cn" = @{
         Label = "Vue.js 中文文档"
         Logo  = "vuedotjs"
+        Color  = "42b883"
     }
 
     "DavidHDev/canvas-ui" = @{
         Label = "Canvas UI"
         Logo  = "html5"
+        Color  = "0a0a0a"
     }
 }
 
@@ -101,10 +108,12 @@ $badgeLines = @(
 
         $labelText = $repoName
         $logoName = "github"
-
+        $color = "000000"
+        
         if ($badgeOverrides.ContainsKey($ownerRepo)) {
             $labelText = $badgeOverrides[$ownerRepo].Label
             $logoName = $badgeOverrides[$ownerRepo].Logo
+            $color = $badgeOverrides[$ownerRepo].Color
         }
 
         $linkQuery = [Uri]::EscapeDataString(
@@ -126,7 +135,7 @@ $badgeLines = @(
             "&amp;style=flat-square" +
             "&amp;logo=$encodedLogo" +
             "&amp;logoColor=white" +
-            "&amp;color=111111"
+            "&amp;color=$color"
 
         '<a href="{0}"><img src="{1}" alt="{2} merged PRs" /></a>' -f `
             $pullsUrl, $badgeUrl, $labelText
