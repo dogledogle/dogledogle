@@ -5,7 +5,7 @@
 
 
 <p align="center">
-  I'm a frontend developer, currently maintaining the <a href="https://github.com/vitejs/vite/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle">vitejs/docs-cn</a> and the <a href="https://github.com/dogledogle/rolldown-docs-cn">rolldown-docs-cn</a> (unofficial).
+  I'm a frontend developer, currently maintaining the <a href="https://github.com/vitejs/docs-cn">vitejs/docs-cn</a> and the <a href="https://github.com/dogledogle/rolldown-docs-cn">rolldown-docs-cn</a> (unofficial).
 </p>
 
 <p align="center">
