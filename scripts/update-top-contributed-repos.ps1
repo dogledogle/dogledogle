@@ -46,8 +46,22 @@ if ($pullRequests.Count -eq 1000) {
     Write-Warning "The ranking may omit older pull requests."
 }
 
+# --- 新增过滤逻辑：排除自己创建的仓库 ---
+$filteredPullRequests = $pullRequests | Where-Object {
+    $repoFullName = $_.repository.nameWithOwner
+    # 如果仓库全名 (如 "dogledogle/my-repo") 不以 "dogledogle/" 开头，则保留
+    -not $repoFullName.StartsWith("$UserName/")
+}
+
+$excludedCount = $pullRequests.Count - $filteredPullRequests.Count
+if ($excludedCount -gt 0) {
+    Write-Host "Excluded $excludedCount pull requests from repositories owned by '$UserName'."
+}
+# --- 过滤结束 ---
+
+# 修改统计来源：使用 $filteredPullRequests 替代原来的 $pullRequests
 $repositories = @(
-    $pullRequests |
+    $filteredPullRequests |
         Group-Object -Property { $_.repository.nameWithOwner } |
         Sort-Object -Property `
             @{ Expression = "Count"; Descending = $true },
