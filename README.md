@@ -24,7 +24,7 @@
 
 <!-- Tech stack -->
 
-<h2 align="center">Technologies & Tools</h2>
+<p align="center">Technologies & Tools</p>
 
 <p align="center">
   <img
@@ -67,7 +67,7 @@
 
 
 <!-- Contributions -->
-<h2 align="center">Open-source Contributions</h2>
+<p align="center">Open-source Contributions</p>
 <!-- <p align="center">
   <a href="https://github.com/vitejs/vite/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Avitejs%2Fvite%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Vite&amp;style=flat-square&amp;logo=vite&amp;logoColor=white&amp;color=646CFF" alt="Vite merged PRs"/></a>
   <a href="https://github.com/vitejs/docs-cn/pulls?q=is%3Apr+is%3Amerged+author%3Adogledogle"><img src="https://img.shields.io/github/issues-search?query=repo%3Avitejs%2Fdocs-cn%20is%3Apr%20is%3Amerged%20author%3Adogledogle&amp;label=Vite%20Docs%20CN&amp;style=flat-square&amp;logo=vite&amp;logoColor=white&amp;color=0F766E" alt="Vite Docs CN merged PRs"/></a>
