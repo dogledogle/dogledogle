@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  I may be late to the open-source party, but I brought plenty of enthusiasm. 
+  I’m still finding my way in open source, learning as I go and contributing wherever I can.
 </p>
 
 <!-- <p align="center">
