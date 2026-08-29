@@ -24,7 +24,7 @@
 
 <!-- Tech stack -->
 
-<p align="center">Technologies & Tools</p>
+<p align="center">Core Tech Stack</p>
 
 <p align="center">
   <img
