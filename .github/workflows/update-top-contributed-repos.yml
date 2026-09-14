@@ -24,7 +24,7 @@ jobs:
       - name: Check out profile repository
         uses: actions/checkout@v7
 
-      - name: Generate repository badges
+      - name: Generate repository commit badges
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}

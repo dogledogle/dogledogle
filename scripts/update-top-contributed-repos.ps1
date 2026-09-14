@@ -43,25 +43,39 @@ Write-Host "Found $($pullRequests.Count) merged pull requests."
 
 if ($pullRequests.Count -eq 1000) {
     Write-Warning "GitHub Search returned 1000 results, which is the API limit."
-    Write-Warning "The ranking may omit older pull requests."
+    Write-Warning "The candidate set may omit repositories with older pull requests."
 }
 
-# --- 新增过滤逻辑：排除自己创建的仓库 ---
-$filteredPullRequests = $pullRequests | Where-Object {
-    $repoFullName = $_.repository.nameWithOwner
-    # 如果仓库全名 (如 "dogledogle/my-repo") 不以 "dogledogle/" 开头，则保留
-    -not $repoFullName.StartsWith("$UserName/")
+$candidateRepositories = @{}
+foreach ($pullRequest in $pullRequests) {
+    $repoFullName = $pullRequest.repository.nameWithOwner
+    if (-not $repoFullName.StartsWith("$UserName/")) {
+        $candidateRepositories[$repoFullName] = $true
+    }
 }
 
-$excludedCount = $pullRequests.Count - $filteredPullRequests.Count
-if ($excludedCount -gt 0) {
-    Write-Host "Excluded $excludedCount pull requests from repositories owned by '$UserName'."
-}
-# --- 过滤结束 ---
+Write-Host "Searching commits for @$UserName ..."
 
-# 修改统计来源：使用 $filteredPullRequests 替代原来的 $pullRequests
+$json = gh search commits `
+    --author $UserName `
+    --limit 1000 `
+    --json repository
+
+if ($LASTEXITCODE -ne 0) {
+    throw "GitHub commit search failed with exit code $LASTEXITCODE."
+}
+
+$commits = @($json | ConvertFrom-Json)
+if ($commits.Count -eq 1000) {
+    throw "Commit search reached the 1000-result limit; repository counts would be incomplete."
+}
+
+$eligibleCommits = $commits | Where-Object {
+    $candidateRepositories.ContainsKey($_.repository.nameWithOwner)
+}
+
 $repositories = @(
-    $filteredPullRequests |
+    $eligibleCommits |
         Group-Object -Property { $_.repository.nameWithOwner } |
         Sort-Object -Property `
             @{ Expression = "Count"; Descending = $true },
@@ -69,95 +83,32 @@ $repositories = @(
         Select-Object -First $TopCount
 )
 
-# Optional visual overrides for specific repositories.
-# Repositories not listed here use their repository name and GitHub logo.
-$badgeOverrides = @{
-    "vitejs/docs-cn" = @{
-        Label = "Vite Docs CN"
-        Logo  = "vite"
-        Color  = "b39aff"
-    }
-    
-    "vitejs/vite" = @{
-        Label = "Vite"
-        Logo  = "vite"
-        Color  = "646CFF"
-    }
-
-    "wangdoc/typescript-tutorial" = @{
-        Label = "TypeScript Tutorial"
-        Logo  = "typescript"
-        Color  = "e57102"
-    }
-
-    "ant-design/ant-design" = @{
-        Label = "Ant Design"
-        Logo  = "antdesign"
-        Color  = "1677ff"
-    }
-
-    "mdn/translated-content" = @{
-        Label = "MDN"
-        Logo  = "mdnwebdocs"
-        Color  = "0a5dbd"
-    }
-
-    "vuejs-translations/docs-zh-cn" = @{
-        Label = "Vue.js 中文文档"
-        Logo  = "vuedotjs"
-        Color  = "42b883"
-    }
-
-    "DavidHDev/canvas-ui" = @{
-        Label = "Canvas UI"
-        Logo  = "html5"
-        Color  = "0a0a0a"
-    }
-}
-
 $badgeLines = @(
     foreach ($repository in $repositories) {
         $ownerRepo = $repository.Name
-        $repoName = ($ownerRepo -split "/")[-1]
-
-        $labelText = $repoName
-        $logoName = "github"
-        $color = "000000"
-        
-        if ($badgeOverrides.ContainsKey($ownerRepo)) {
-            $labelText = $badgeOverrides[$ownerRepo].Label
-            $logoName = $badgeOverrides[$ownerRepo].Logo
-            $color = $badgeOverrides[$ownerRepo].Color
+        $repositoryParts = $ownerRepo -split "/", 2
+        $repositoryLabel = if ($repositoryParts.Count -eq 2 -and $repositoryParts[0] -eq $repositoryParts[1]) {
+            $repositoryParts[0]
         }
+        else {
+            $ownerRepo
+        }
+        $encodedRepository = [Uri]::EscapeDataString($repositoryLabel)
 
-        $linkQuery = [Uri]::EscapeDataString(
-            "is:pr is:merged author:$UserName"
-        )
+        $commitsUrl = "https://github.com/$ownerRepo/commits?author=$UserName"
 
-        $badgeQuery = [Uri]::EscapeDataString(
-            "repo:$ownerRepo is:pr is:merged author:$UserName"
-        )
+        $badgeUrl = "https://img.shields.io/static/v1" +
+            "?label=$encodedRepository" +
+            "&amp;message=$($repository.Count)" +
+            "&amp;style=flat-square"
 
-        $encodedLabel = [Uri]::EscapeDataString($labelText)
-        $encodedLogo = [Uri]::EscapeDataString($logoName)
-
-        $pullsUrl = "https://github.com/$ownerRepo/pulls?q=$linkQuery"
-
-        $badgeUrl = "https://img.shields.io/github/issues-search" +
-            "?query=$badgeQuery" +
-            "&amp;label=$encodedLabel" +
-            "&amp;style=flat-square" +
-            "&amp;logo=$encodedLogo" +
-            "&amp;logoColor=white" +
-            "&amp;color=$color"
-
-        '<a href="{0}"><img src="{1}" alt="{2} merged PRs" /></a>' -f `
-            $pullsUrl, $badgeUrl, $labelText
+        '<a href="{0}"><img align="center" src="{1}" alt="{2} - {3}" /></a>' -f `
+            $commitsUrl, $badgeUrl, $repositoryLabel, $repository.Count
     }
 )
 
 if ($badgeLines.Count -eq 0) {
-    $badgeLines = @("<em>No merged pull requests found.</em>")
+    $badgeLines = @("<em>No commits found in contributed repositories.</em>")
 }
 
 $readmeFullPath = (Resolve-Path -LiteralPath $ReadmePath).Path
@@ -182,12 +133,10 @@ else {
     "`n"
 }
 
-$badgeHtml = $badgeLines -join " "
-
 $replacementLines = @(
     $startMarker
     "<!-- Generated automatically. Do not edit this section manually. -->"
-    "<p align=`"center`">$badgeHtml</p>"
+    $badgeLines
     $endMarker
 )
 
@@ -219,6 +168,6 @@ $utf8WithoutBom = [System.Text.UTF8Encoding]::new($false)
 Write-Host "README updated with $($repositories.Count) repositories."
 
 foreach ($repository in $repositories) {
-    Write-Host ("{0,4} merged PRs  {1}" -f `
+    Write-Host ("{0,4} commits  {1}" -f `
         $repository.Count, $repository.Name)
 }
