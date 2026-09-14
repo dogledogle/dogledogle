@@ -23,10 +23,12 @@ function Get-RepositoryName {
     }
 
     $repository = $repositoryProperty.Value
-    $nameWithOwnerProperty = $repository.PSObject.Properties['nameWithOwner']
-    if ($null -ne $nameWithOwnerProperty -and
-        -not [string]::IsNullOrWhiteSpace([string]$nameWithOwnerProperty.Value)) {
-        return [string]$nameWithOwnerProperty.Value
+    foreach ($propertyName in @('nameWithOwner', 'fullName')) {
+        $nameProperty = $repository.PSObject.Properties[$propertyName]
+        if ($null -ne $nameProperty -and
+            -not [string]::IsNullOrWhiteSpace([string]$nameProperty.Value)) {
+            return [string]$nameProperty.Value
+        }
     }
 
     return $null
@@ -82,26 +84,39 @@ Write-Host "Searching commits for @$UserName ..."
 $json = gh search commits `
     --author $UserName `
     --limit 1000 `
-    --json repository `
-    --jq '.[].repository.nameWithOwner'
+    --json repository
 
 if ($LASTEXITCODE -ne 0) {
     throw "GitHub commit search failed with exit code $LASTEXITCODE."
 }
 
-$commitRepositories = @(
-    $json -split "`r?`n" |
-        ForEach-Object { $_.Trim() } |
-        Where-Object { -not [string]::IsNullOrWhiteSpace($_) -and $_ -ne "null" }
-)
-if ($commitRepositories.Count -eq 1000) {
+$parsedCommits = $json | ConvertFrom-Json
+
+$commits = [System.Collections.Generic.List[object]]::new()
+foreach ($commit in $parsedCommits) {
+    $commits.Add($commit)
+}
+
+Write-Host "Found $($commits.Count) commits."
+
+if ($commits.Count -eq 1000) {
     throw "Commit search reached the 1000-result limit; repository counts would be incomplete."
 }
 
-$eligibleCommitRepositories = @(
-    $commitRepositories | Where-Object {
-        $candidateRepositories.ContainsKey($_)
+$commitRepositories = [System.Collections.Generic.List[string]]::new()
+foreach ($commit in $commits) {
+    $repoFullName = Get-RepositoryName $commit
+    if (-not [string]::IsNullOrWhiteSpace($repoFullName)) {
+        $commitRepositories.Add($repoFullName)
     }
+}
+
+if ($commits.Count -gt 0 -and $commitRepositories.Count -eq 0) {
+    throw "Commit search returned results, but no repository names could be parsed."
+}
+
+$eligibleCommitRepositories = @(
+    $commitRepositories | Where-Object { $candidateRepositories.ContainsKey($_) }
 )
 
 $repositories = @(
