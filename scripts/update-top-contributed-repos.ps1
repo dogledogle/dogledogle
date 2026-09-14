@@ -10,6 +10,28 @@ $ErrorActionPreference = "Stop"
 $startMarker = "<!-- TOP-CONTRIBUTED-REPOS:START -->"
 $endMarker = "<!-- TOP-CONTRIBUTED-REPOS:END -->"
 
+function Get-RepositoryName {
+    param([object]$Item)
+
+    if ($null -eq $Item) {
+        return $null
+    }
+
+    $repositoryProperty = $Item.PSObject.Properties['repository']
+    if ($null -eq $repositoryProperty -or $null -eq $repositoryProperty.Value) {
+        return $null
+    }
+
+    $repository = $repositoryProperty.Value
+    $nameWithOwnerProperty = $repository.PSObject.Properties['nameWithOwner']
+    if ($null -ne $nameWithOwnerProperty -and
+        -not [string]::IsNullOrWhiteSpace([string]$nameWithOwnerProperty.Value)) {
+        return [string]$nameWithOwnerProperty.Value
+    }
+
+    return $null
+}
+
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     throw "GitHub CLI (gh) is not installed or is not available in PATH."
 }
@@ -48,8 +70,9 @@ if ($pullRequests.Count -eq 1000) {
 
 $candidateRepositories = @{}
 foreach ($pullRequest in $pullRequests) {
-    $repoFullName = $pullRequest.repository.nameWithOwner
-    if (-not $repoFullName.StartsWith("$UserName/")) {
+    $repoFullName = Get-RepositoryName $pullRequest
+    if (-not [string]::IsNullOrWhiteSpace($repoFullName) -and
+        -not $repoFullName.StartsWith("$UserName/")) {
         $candidateRepositories[$repoFullName] = $true
     }
 }
@@ -70,13 +93,19 @@ if ($commits.Count -eq 1000) {
     throw "Commit search reached the 1000-result limit; repository counts would be incomplete."
 }
 
-$eligibleCommits = $commits | Where-Object {
-    $candidateRepositories.ContainsKey($_.repository.nameWithOwner)
-}
+$eligibleCommits = @(
+    foreach ($commit in $commits) {
+        $repoFullName = Get-RepositoryName $commit
+        if (-not [string]::IsNullOrWhiteSpace($repoFullName) -and
+            $candidateRepositories.ContainsKey($repoFullName)) {
+            $commit
+        }
+    }
+)
 
 $repositories = @(
     $eligibleCommits |
-        Group-Object -Property { $_.repository.nameWithOwner } |
+        Group-Object -Property { Get-RepositoryName $_ } |
         Sort-Object -Property `
             @{ Expression = "Count"; Descending = $true },
             @{ Expression = "Name"; Descending = $false } |
