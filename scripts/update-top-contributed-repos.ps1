@@ -9,6 +9,14 @@ $ErrorActionPreference = "Stop"
 
 $startMarker = "<!-- TOP-CONTRIBUTED-REPOS:START -->"
 $endMarker = "<!-- TOP-CONTRIBUTED-REPOS:END -->"
+$badgeLabelColor = "18181B"
+$badgeColors = @(
+    "0077FF"
+    "2563EB"
+    "4F46E5"
+    "7C3AED"
+    "9333EA"
+)
 
 function Get-RepositoryName {
     param([object]$Item)
@@ -129,7 +137,8 @@ $repositories = @(
 )
 
 $badgeLines = @(
-    foreach ($repository in $repositories) {
+    for ($index = 0; $index -lt $repositories.Count; $index++) {
+        $repository = $repositories[$index]
         $ownerRepo = $repository.Name
         $repositoryParts = $ownerRepo -split "/", 2
         $repositoryLabel = if ($repositoryParts.Count -eq 2 -and $repositoryParts[0] -eq $repositoryParts[1]) {
@@ -145,6 +154,8 @@ $badgeLines = @(
         $badgeUrl = "https://img.shields.io/static/v1" +
             "?label=$encodedRepository" +
             "&amp;message=$($repository.Count)" +
+            "&amp;labelColor=$badgeLabelColor" +
+            "&amp;color=$($badgeColors[$index % $badgeColors.Count])" +
             "&amp;style=flat-square"
 
         '<a href="{0}"><img align="center" src="{1}" alt="{2} - {3}" /></a>' -f `
