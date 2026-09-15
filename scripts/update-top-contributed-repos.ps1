@@ -136,6 +136,8 @@ $repositories = @(
         Select-Object -First $TopCount
 )
 
+$encodedUserName = [Uri]::EscapeDataString($UserName)
+
 $badgeLines = @(
     for ($index = 0; $index -lt $repositories.Count; $index++) {
         $repository = $repositories[$index]
@@ -151,15 +153,17 @@ $badgeLines = @(
 
         $commitsUrl = "https://github.com/$ownerRepo/commits?author=$UserName"
 
-        $badgeUrl = "https://img.shields.io/static/v1" +
-            "?label=$encodedRepository" +
-            "&amp;message=$($repository.Count)" +
+        # Shields queries GitHub when the README image is requested, so the
+        # displayed count stays current without rewriting README.md.
+        $badgeUrl = "https://img.shields.io/github/commit-activity/t/$ownerRepo" +
+            "?authorFilter=$encodedUserName" +
+            "&amp;label=$encodedRepository" +
             "&amp;labelColor=$badgeLabelColor" +
             "&amp;color=$($badgeColors[$index % $badgeColors.Count])" +
             "&amp;style=flat-square"
 
-        '<a href="{0}"><img align="center" src="{1}" alt="{2} - {3}" /></a>' -f `
-            $commitsUrl, $badgeUrl, $repositoryLabel, $repository.Count
+        '<a href="{0}"><img align="center" src="{1}" alt="{2} - commits by {3}" /></a>' -f `
+            $commitsUrl, $badgeUrl, $repositoryLabel, $UserName
     }
 )
 
