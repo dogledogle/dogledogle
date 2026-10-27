@@ -41,6 +41,10 @@ I like turning confusing source code into clear docs and useful developer experi
     alt="Less"
   />
   <img
+    src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white"
+    alt="Tailwind CSS"
+  />
+  <img
     src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"
     alt="Node.js"
   />
